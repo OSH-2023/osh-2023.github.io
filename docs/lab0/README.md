@@ -340,7 +340,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 - Git 如何做到在不同提交状态快速切换的？可参考 [Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)。
 
-- **「必做」**在你自己的账号下（而不是 OSH-2023 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2023-labs，然后邀请三位助教成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。这个仓库的目录应具有类似如下清晰的结构：
+- **「必做」**在你自己的账号下（而不是 OSH-2023 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2023-labs，然后邀请三位助教（id 分别为：liuly0322，SproutNan，IrisesD）成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。这个仓库的目录应具有类似如下清晰的结构：
 
   ```shell
   - osh-2023-labs
