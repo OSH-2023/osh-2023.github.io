@@ -1,6 +1,6 @@
 # 常见问题
 
-往年的主页及 FAQ 亦可作参考。[OSH-2022](https://osh-2022.github.io/)，[OSH-2021](https://osh-2021.github.io/)，[OSH-2020](https://osh-2020.github.io/)，
+往年的主页及 FAQ 亦可作参考。[OSH-2022](https://osh-2022.github.io/)，[OSH-2021](https://osh-2021.github.io/)，[OSH-2020](https://osh-2020.github.io/)。
 
 ## 推荐几个 meeting 的好去处？
 
