@@ -48,7 +48,7 @@ OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节
 ???+ tip "终端/shell/命令行/软件源/换源是什么意思？"
 
     如果你还不知道这些词语的意思，请自行上网搜索。这会让你对 Linux 建立基本的了解。
-
+    
     安装好 Linux 后推荐先更换软件源。如对于 Ubuntu 系统，参考 [USTC Mirror Ubuntu 源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu.html)。
 
 推荐以下资源：
@@ -62,27 +62,27 @@ OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节
 ??? question "为什么要使用 Linux"
 
     参考 [南京大学 ICS PA](https://nju-projectn.github.io/ics-pa-gitbook/ics2022/0.5.html)（License: CC BY-NC-SA 3.0 CN）。
-
+    
     我们先来看两个例子。
-
+    
     **如何比较两个文件是否完全相同？**这个例子看上去非常简单，在 Linux 下使用 `diff` 命令就可以实现。如果文件很大，那不妨用 `md5sum` 来计算并比较它们的 MD5。对一个 Linux 用户来说，键入这些命令只需要花费大约 3 秒的时间。但在 Windows 下，这件事要做起来就不那么容易了。也许你下载了一个 MD5 计算工具，但你需要点击多少次鼠标才能完成比较呢? 也许你觉得一次好像也省不了多少时间，<span style="color: red">然而真相是，你的开发效率就是这样一点点降低的。</span>
-
+    
     **如何列出一个C语言项目中所有被包含过的头文件？**这个例子比刚才的稍微复杂一些，但在 Windows 下你几乎无法高效地做到它。在 Linux 中，我们只需要通过一行命令就可以做到了：
-
+    
     ```shell
     find . -name "*.[ch]" | xargs grep "#include" | sort | uniq
     ```
-
+    
     通过查阅 `man`，你应该不难理解上述命令是如何实现所需功能的。这个例子再次体现了 Unix 哲学：
-
+    
     - 每个工具只做一件事情，但做到极致；
     - 工具采用文件方式进行输入输出，从而易于使用；
     - 通过工具之间的组合来解决复杂问题。
-
+    
     Unix 哲学的最后一点最能体现 Linux 和 Windows 的区别：<span style="color:blue">编程创造</span>。如果把工具比作代码中的函数，工具之间的组合就是一种编程。而 Windows 的工具之间几乎无法组合，因为面向普通用户的 Windows 需要强调易用性。
-
+    
     所以，你应该使用 Linux 的原因非常简单：<span style="color:red">作为一个码农，Windows 一直在阻碍你思想，能力和效率的提升。</span>
-
+    
     上面这段文字是从一个程序员的角度来说的。对于操作系统课程而言，也有必须熟悉与使用 Linux 的理由：作为目前最流行的开源操作系统，Linux 在足够易用，实用的同时也能帮助你将操作系统课程的理论与实践相结合。你不仅可以使用系统调用或系统调用封装而来的函数库，也可以通过源代码了解到每一个系统调用和数据结构的具体实现。
 
 ???+ info "The Missing Semester of Your CS Education"
@@ -367,6 +367,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ## 「TBD」markdown
 
+
+
 ## 编程语言要求
 
 本学期实验如无特殊声明均允许使用 C、C++、Rust 其中任意一种语言完成。本章将简单介绍需要掌握或了解的 C、C++、Rust 语言知识。这些知识并不一定会在实验中用到，但是理解它们或许能够指导你的实际开发过程并减少在各个语言文档中探索的时间。
@@ -387,17 +389,17 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ??? tips "关于 Modern C++"
 
     如果你选择使用 C++ 完成实验，那么<span style="color:red">请不要将 C++ 代码写得宛如 C 一样</span>。现代的、C++11 标准后的 C++ 增添了众多强有力的工具，能够帮助你以更高效、更简洁的手段达成目标。
-
+    
     如需全方位的了解 Modern C++，可以阅读《A Tour of C++》以及进阶的例如《Modern Effective C++》等书籍，其中详细讲解了 Modern C++ 中的一些设计理念和最佳实践。也可以参考《[现代 C++ 教程](https://changkun.de/modern-cpp/zh-cn/00-preface/)》。
-
+    
     下面我们也给出一些 tips：
-
+    
     - （STL）栈上的固定大小数组 `int a[12]` 使用 `std::array` 代替；
     - （STL）堆上的不定长数组 `new int[n]` 使用 `std::vector` 代替；
     - （STL）使用 `std::string` 代替 `chat buf[N]`。用 `s.c_str()` 或是 `&s[0]` 获取 C 字符串的不可变或可变指针。
-
+    
     以下是一些进阶内容，可以选择性了解：
-
+    
     - （STL）`<memory>` 中 `unique_ptr`、`shared_ptr` 和 `weak_ptr` 智能指针可以实现自动在合适的时刻释放资源，可以配合 `std::thread` 等使用。<span style="color:blue">可以尝试使用智能指针替换所有裸指针</span>；
     - （性能）了解左值，右值和将亡值的概念。了解移动语义、`std::move` 的使用和完美转发；
     - （设计）了解 lambda 表达式及其捕获方式；
@@ -411,7 +413,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
     详细语言教程也可以在 [官网教程汇总界面](https://www.rust-lang.org/learn) 按需查阅。
     其中重点是 [Rust Book](https://doc.rust-lang.org/book/) 这份教程，其在高低层次上都对 Rust 进行了详细的解析。
     而如果你之前只了解过 C 开发，可以着重关注 Rust Book 中的以下概念：
-
+    
     - Ownership，lifetime，borrow，这些是 Rust 最核心的概念之一；
       - 对应章节是 [Understanding Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) 和 [Validating References with Lifetimes](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)。
     - 模式匹配（pattern matching），如 `match` 和 `if let` 的用法；
@@ -421,13 +423,13 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
     - 并发编程，包括多线程（互斥锁，channel）、协程（async）等；
     - 函数式编程（functional programming），如 `map`、`filter` 的用法；
     - 基本的 unsafe Rust 用法，可能会在调用外部库时用到。
-
+    
     在本课程实验之外，也可以拓展了解以下内容：
-
+    
     - 智能指针（smart pointer），C++ `<memory>` 库中也有相似实现；
     - 错误处理（error handling），Rust 错误处理与 Go 有类似之处，如有经验可以对照学习，但本次实验应该不会在错误处理上有较高要求，把握概念即可；
     - Traits（有译作特质的），类似于接口，可用于实现多态。
-
+    
     其他的例如 [Rust by Example](https://doc.rust-lang.org/rust-by-example/) 也是很优质的教程，也能让你迅速找到自己所需要的写法。
 
 实验自愿使用 Rust 语言，不会做进一步的要求。
@@ -546,14 +548,14 @@ Program received signal SIGABRT, Aborted.
 ??? tips "编译时参数 -g 的作用？"
 
     在终端输入 `man gdb` 并找到 `-g` 的帮助文档，可以看到：
-
+    
     ````
     -g  Produce debugging information in the operating system's native format (stabs, COFF, XCOFF, or DWARF).  GDB can work with this
            debugging information.
     ````
-
+    
     简单来说，这个参数会在编译的时候加入额外的调试信息，比如代码所在的行号（在 gdb 报错的时候非常有用，还可以拿来插入断点）等等。否则 gdb 调试的就是一个简单的二进制文件，能输出的信息会少很多。
-
+    
     你也可以不加 `-g`，然后对比一下 gdb 的输出。
 
 #### VSCode 调试
