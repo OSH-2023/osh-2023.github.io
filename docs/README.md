@@ -1,8 +1,8 @@
-# USTC OSH 2022 课程主页
+# USTC OSH 2023 课程主页
 
 ## 课程信息
 
-- 上课时间：**每周一 15:55-17:30** 和 **每周三 9:45-11:20**
+- 上课时间：**每周一 15:55-17:30** 和 **每周三 7:50-9:25**
 - 教室：**3A407**
 - 讲师：[**邢凯**](mailto:kxing@ustc.edu.cn)
 - 助教：[**丁程**](mailto:dingcheng@mail.ustc.edu.cn) [**黄瑞轩**](mailto:sprout@mail.ustc.edu.cn) [**刘良宇**](mailto:osh@lly.moe)
