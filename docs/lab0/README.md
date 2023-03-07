@@ -557,10 +557,10 @@ Markdown 支持 LaTeX 公式。 \$  表示行内公式 \$$ 表示整行公式 �
 例如：
 
 ```text
-$ X\stackrel{F}{\longrightarrow}Y $
+$ \Sigma_{i=0}^{n} a^{i} $
 ```
 
-效果如下： $ X\stackrel{F}{\longrightarrow}Y $
+效果如下： $ \Sigma_{i=0}^{n} a^{i} $
 
 受篇幅所限，这里仅介绍 Markdown 一些常用语法，想要了解更多的同学可以自行 Search。
 
