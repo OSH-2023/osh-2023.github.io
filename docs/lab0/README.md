@@ -58,6 +58,8 @@ OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节
 
     所以，你应该使用 Linux 的原因非常简单：<span style="color:red">作为一个码农，Windows 一直在阻碍你思想，能力和效率的提升。</span>
 
+    上面这段文字是从一个程序员的角度来说的。对于操作系统课程而言，也有必须熟悉与使用 Linux 的理由：作为目前最流行的开源操作系统，Linux 在足够易用，实用的同时也能帮助你将操作系统课程的理论与实践相结合。你不仅可以使用系统调用或系统调用封装而来的函数库，也可以通过源代码了解到每一个系统调用和数据结构的具体实现。
+
 ???+ info "The Missing Semester of Your CS Education"
 
     [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) 是 MIT 的一门 Linux 工具系列教程，官网上有简体中文的翻译版。如果你想 **进阶** 自己的 Linux 使用技巧，不妨看看这套课程。
