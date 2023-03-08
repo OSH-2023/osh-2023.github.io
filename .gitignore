@@ -278,3 +278,6 @@ dist
 # IDE
 .vscode/
 .idea/
+
+# macOS
+.DS_Store
