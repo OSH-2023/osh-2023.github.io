@@ -20,7 +20,7 @@ $ pwd             # 如果你不知道这个指令，请尝试使用 man 等方�
 $ mkdir learn_git # 创建一个新的名为 learn_git 的文件夹
 $ cd learn_git    # 进入该文件夹。你可以再次使用 pwd 检查路径
 $ git init
-Initialized empty Git repository in /home/ubuntu/learn_git/.git/
+Initialized empty Git repository in /home/osh/learn_git/.git/
 ```
 
 版本库由 `.git` 文件夹来管理，请不要对此文件夹进行手动操作！
