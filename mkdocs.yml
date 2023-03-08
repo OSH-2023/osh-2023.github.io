@@ -22,13 +22,10 @@ extra_css:
   - 'https://101.ustclug.org/css/extra.css'
 nav:
   - 首页: README.md
-  - 实验零: 
-      - 首页: lab0/README.md
+  - 实验零:
+      - 简介: lab0/README.md
       - 第一节：Linux: lab0/phase1.md
       - 第二节：Git: lab0/phase2.md
       - 第三节：markdown: lab0/phase3.md
       - 第四节：编程语言: lab0/phase4.md
   - FAQ: faq/README.md
-extra_javascript:
-  - mathjax-config.js
-  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML

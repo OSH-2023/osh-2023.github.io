@@ -1,24 +1,23 @@
-
 ## Git 版本维护
 
-Git 是一个免费、开源的分布式版本控制系统，它为团队协作和软件开发提供了许多重要的优势和必要性，包括：
+Git 是一个免费、开源的分布式版本控制系统，非常推荐大家掌握必要的 Git 操作，这对大家协作进行大作业的开发非常有效。下面的教学是一个较为精炼的版本，且仅给出 Linux 上的执行命令，更多细节可点击文章末尾的详细教程链接查询。
 
-- **版本控制**：Git 可以跟踪代码的变化，允许开发人员随时访问以前的版本。这意味着您可以轻松地撤消错误更改，恢复文件状态，比较代码差异等等。在团队协作中，Git 可以允许团队成员协同工作，对同一份代码进行修改和版本管控，保证了代码的稳定性与质量。
-- **分支管理**：Git 的分支管理可以使多个团队成员同时在代码库上开发不同的功能和新特性，简化了并行开发的过程。开发人员可以使用 Git 分支来隔离他们的工作，不影响其他开发人员的工作，同时可以方便地合并多个分支，使开发环节更清晰明确。
-- **回溯和还原**：Git 允许开发人员回到任何一个历史版本，并进行修改和还原操作，这是非常简单、快速和可靠的。这意味着开发人员可以找到系统中的问题，快速定位问题源头，并进行解决。
-- **远程协作**：Git 可以让团队成员在不同的地点协作开发，而不会受到距离和时间限制。团队成员可以在本地上建立与远程代码库的连接，并轻松推送和拉取变更。这使得团队内成员的协作更加自然、高效。
+???question "Git 有哪些好处？"
 
-非常推荐大家掌握必要的 Git 操作，这对大家协作进行大作业的开发非常有效。下面的教学是一个较为精炼的版本，且仅给出 Linux 上的执行命令，更多细节可点击文章末尾的详细教程链接查询。
+    - **版本控制**：Git 可以跟踪代码的变化，允许开发人员随时访问以前的版本。这意味着您可以轻松地撤消错误更改，恢复文件状态，比较代码差异等等。在团队协作中，Git 可以允许团队成员协同工作，对同一份代码进行修改和版本管控，保证了代码的稳定性与质量。
+    - **分支管理**：Git 的分支管理可以使多个团队成员同时在代码库上开发不同的功能和新特性，简化了并行开发的过程。开发人员可以使用 Git 分支来隔离他们的工作，不影响其他开发人员的工作，同时可以方便地合并多个分支，使开发环节更清晰明确。
+    - **回溯和还原**：Git 允许开发人员回到任何一个历史版本，并进行修改和还原操作，这是非常简单、快速和可靠的。这意味着开发人员可以找到系统中的问题，快速定位问题源头，并进行解决。
+    - **远程协作**：Git 可以让团队成员在不同的地点协作开发，而不会受到距离和时间限制。团队成员可以在本地上建立与远程代码库的连接，并轻松推送和拉取变更。这使得团队内成员的协作更加自然、高效。
 
 ### 创建 Git 可管理的仓库
 
 从已有文件夹创建：
 
 ```shell
-$ pwd
-/Users/OSH/learngit
+$ pwd # 如果你不知道这个指令，请尝试使用 man 等方式查找含义
+/Users/OSH/learn_git
 $ git init
-Initialized empty Git repository in /Users/OSH/learngit/.git/
+Initialized empty Git repository in /Users/OSH/learn_git/.git/
 ```
 
 版本库由 `.git` 文件夹来管理，请不要对此文件夹进行手动操作！
@@ -169,10 +168,14 @@ Deleted branch dev (was b17d20e).
 
 #### 将一个空的 GitHub 远程仓库与本地仓库关联
 
-在本地的 `learngit` 仓库下运行命令：
+???+ warning "注意"
+
+    learn_git 仓库不是实验需要提交的 osh-2023-labs 仓库，仅供自行练习。
+
+在本地的 `learn_git` 仓库下运行命令：
 
 ```shell
-$ git remote add origin git@github.com:OSH-TA/learngit.git
+$ git remote add origin git@github.com:OSH-TA/learn_git.git
 ```
 
 请注意把上面的 `OSH-TA` 替换成你自己的 GitHub 账户名，添加后，远程库的名字为 `origin`，这是 Git 默认的叫法。下一步，就可以把本地库的所有内容推送到远程库上：
@@ -185,7 +188,7 @@ Compressing objects: 100% (15/15), done.
 Writing objects: 100% (20/20), 1.64 KiB | 560.00 KiB/s, done.
 Total 20 (delta 5), reused 0 (delta 0)
 remote: Resolving deltas: 100% (5/5), done.
-To github.com:michaelliao/learngit.git
+To github.com:michaelliao/learn_git.git
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
@@ -227,9 +230,9 @@ $ git commit -m "add new env"
  1 file changed, 1 insertion(+)
  create mode 100644 env.txt
 $ git push origin dev
-To github.com:OSH-TA/learngit.git
+To github.com:OSH-TA/learn_git.git
  ! [rejected]        dev -> dev (non-fast-forward)
-error: failed to push some refs to 'git@github.com:OSH-TA/learngit.git'
+error: failed to push some refs to 'git@github.com:OSH-TA/learn_git.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
@@ -249,22 +252,6 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 - Git 如何做到在不同提交状态快速切换的？可参考 [Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)。
 
-- **「必做」**在你自己的账号下（而不是 OSH-2023 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2023-labs，然后邀请三位助教（id 分别为：liuly0322，SproutNan，IrisesD）成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。这个仓库的目录应具有类似如下清晰的结构：
-
-  ```shell
-  - osh-2023-labs
-    - lab0
-      - phase1.md
-      - phase2.md
-      - ...
-    - lab1
-    - lab2
-    - lab3
-    - lab4
-  ```
-
-- 尝试编写一个文本文件和一个二进制文件（如 word 文档），执行本节所述的教程。
-
 - 学习如何用精简的语言描述一次 commit。可以从分类的角度考虑，如：
 
   ```
@@ -273,3 +260,9 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   fix: typo
   ...
   ```
+
+- **「必做」**在你自己的账号下（而不是 OSH-2023 组织）创建一个新的、**私有的** GitHub 远程仓库，将其命名为 osh-2023-labs，然后邀请三位助教（id 分别为：liuly0322，SproutNan，IrisesD）成为这个仓库的共同贡献者（collaborators），以便后续实验的批改。
+
+???+ question "我现在需要提交什么？"
+
+    初始建立空仓库即可。具体提交内容请见下一小节。
