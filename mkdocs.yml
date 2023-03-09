@@ -5,6 +5,9 @@ theme:
   name: 'material'
   custom_dir: 'overrides'
   language: 'zh'
+  features:
+    - content.code.copy
+    - navigation.footer
 markdown_extensions:
   - admonition
   - attr_list
