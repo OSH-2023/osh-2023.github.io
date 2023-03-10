@@ -1,14 +1,14 @@
-## 编程语言要求
+# 编程说明
 
 本学期实验如无特殊声明均允许使用 C、C++、Rust 其中任意一种语言完成。本章将简单介绍需要掌握或了解的 C、C++、Rust 语言知识。这些知识并不一定会在实验中用到，但是理解它们或许能够指导你的实际开发过程并减少在各个语言文档中探索的时间。
 
-### C 的要求
+## C 的要求
 
 - 了解 C99 标准下几乎所有的 C 用法，这是考虑到 C 的标准语言特性并不太多，更进阶的用法也更倾向于依赖编译器特性或是标准用法的巧用；
 - 了解基本的宏知识，例如宏函数中参数使用时需要括号包裹，这是因为调用 Linux API 时需要用到宏；
 - 掌握查询 Linux API 文档的方法，无论是使用 `man`、`tldr` 或是直接查看网页版 man 文档。
 
-### C++ 的要求
+## C++ 的要求
 
 - 掌握基本的 C 用法；
 - 宏，如 C 要求所述；
@@ -18,23 +18,23 @@
 ??? tips "关于 Modern C++"
 
     如果你选择使用 C++ 完成实验，那么<span style="color:red">请不要将 C++ 代码写得宛如 C 一样</span>。现代的、C++11 标准后的 C++ 增添了众多强有力的工具，能够帮助你以更高效、更简洁的手段达成目标。
-    
+
     如需全方位的了解 Modern C++，可以阅读《A Tour of C++》以及进阶的例如《Modern Effective C++》等书籍，其中详细讲解了 Modern C++ 中的一些设计理念和最佳实践。也可以参考《[现代 C++ 教程](https://changkun.de/modern-cpp/zh-cn/00-preface/)》。
-    
+
     下面我们也给出一些 tips：
-    
+
     - （STL）栈上的固定大小数组 `int a[12]` 使用 `std::array` 代替；
     - （STL）堆上的不定长数组 `new int[n]` 使用 `std::vector` 代替；
     - （STL）使用 `std::string` 代替 `chat buf[N]`。用 `s.c_str()` 或是 `&s[0]` 获取 C 字符串的不可变或可变指针。
-    
+
     以下是一些进阶内容，可以选择性了解：
-    
+
     - （STL）`<memory>` 中 `unique_ptr`、`shared_ptr` 和 `weak_ptr` 智能指针可以实现自动在合适的时刻释放资源，可以配合 `std::thread` 等使用。<span style="color:blue">可以尝试使用智能指针替换所有裸指针</span>；
     - （性能）了解左值，右值和将亡值的概念。了解移动语义、`std::move` 的使用和完美转发；
     - （设计）了解 lambda 表达式及其捕获方式；
     - （设计）了解虚函数及如何通过继承实现多态。
 
-### Rust 的要求
+## Rust 的要求
 
 ??? tips "关于 Rust"
 
@@ -42,7 +42,7 @@
     详细语言教程也可以在 [官网教程汇总界面](https://www.rust-lang.org/learn) 按需查阅。
     其中重点是 [Rust Book](https://doc.rust-lang.org/book/) 这份教程，其在高低层次上都对 Rust 进行了详细的解析。
     而如果你之前只了解过 C 开发，可以着重关注 Rust Book 中的以下概念：
-    
+
     - Ownership，lifetime，borrow，这些是 Rust 最核心的概念之一；
       - 对应章节是 [Understanding Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) 和 [Validating References with Lifetimes](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)。
     - 模式匹配（pattern matching），如 `match` 和 `if let` 的用法；
@@ -52,19 +52,19 @@
     - 并发编程，包括多线程（互斥锁，channel）、协程（async）等；
     - 函数式编程（functional programming），如 `map`、`filter` 的用法；
     - 基本的 unsafe Rust 用法，可能会在调用外部库时用到。
-    
+
     在本课程实验之外，也可以拓展了解以下内容：
-    
+
     - 智能指针（smart pointer），C++ `<memory>` 库中也有相似实现；
     - 错误处理（error handling），Rust 错误处理与 Go 有类似之处，如有经验可以对照学习，但本次实验应该不会在错误处理上有较高要求，把握概念即可；
     - Traits（有译作特质的），类似于接口，可用于实现多态。
-    
+
     其他的例如 [Rust by Example](https://doc.rust-lang.org/rust-by-example/) 也是很优质的教程，也能让你迅速找到自己所需要的写法。
 
 实验自愿使用 Rust 语言，不会做进一步的要求。
 如果你选择在实验中使用 Rust 语言，你依然可以从助教处获取一些语言使用上的基础帮助，并与其他同学在同一标准下进行评测。
 
-#### 实验中的优缺点
+### 实验中的优缺点
 
 选择 Rust 可能会在本轮实验中遇见以下优缺点：
 
@@ -79,7 +79,7 @@
 - Rust 的学习曲线稍显陡峭，尤其是从原汁原味的 C 出发的话；
 - Rust 不能直接使用 Linux API（由众多 C header 文件提供），下文我们将详细讨论这个问题。
 
-#### 外部库的要求
+### 外部库的要求
 
 如优缺点中所言，尽管 Rust 标准库相对较丰富，但需要调用特定 Linux API 时，Linux 提供的是 C header 文件。从头文件到 Rust 的绑定较为麻烦，所以如无特地声明，我们默认允许使用 Rust 语言时调用以下这些外部库（后续可能会增充此列表，但不会删减）：
 
@@ -94,7 +94,7 @@
 
 如果一个外部库被禁止，实验中对应项目将可能被酬情扣分。
 
-### 调试
+## 调试
 
 ???+ tips "预期目标"
 
@@ -102,7 +102,7 @@
 
 在本学期的实验中，你可能会写出各式各样的 bug，用好 debugger 往往可以大幅提升你的调试效率。本部分主要介绍 C++ 程序的调试。
 
-#### GDB 调试
+### GDB 调试
 
 本节会对 C/C++ 常用的 [GDB (GNU Project debugger)](https://www.sourceware.org/gdb/) 进行介绍。
 
@@ -177,17 +177,17 @@ Program received signal SIGABRT, Aborted.
 ??? tips "编译时参数 -g 的作用？"
 
     在终端输入 `man gdb` 并找到 `-g` 的帮助文档，可以看到：
-    
+
     ````
     -g  Produce debugging information in the operating system's native format (stabs, COFF, XCOFF, or DWARF).  GDB can work with this
            debugging information.
     ````
-    
+
     简单来说，这个参数会在编译的时候加入额外的调试信息，比如代码所在的行号（在 gdb 报错的时候非常有用，还可以拿来插入断点）等等。否则 gdb 调试的就是一个简单的二进制文件，能输出的信息会少很多。
-    
+
     你也可以不加 `-g`，然后对比一下 gdb 的输出。
 
-#### VSCode 调试
+### VSCode 调试
 
 在命令行里用 gdb debug 虽然简单，但是很多时候不够直观方便。你也可以尝试用 IDE 自带的 debug 功能（有些是基于 gdb 的，但是提供了非常方便的操作界面）。这里以 VSCode 为例：
 
@@ -229,7 +229,7 @@ VSCode 调试的核心是工作区的 `launch.json` 文件。在安装了 C/C++ 
 
 IDE 的断点调试往往都比较直观，这里就不再介绍了，同学们可以自行探索。
 
-### 练习
+## 练习
 
 - 使用 C++ 编写一个 `split` 字符串函数，函数签名如下：
 

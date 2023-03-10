@@ -1,8 +1,8 @@
-## Linux
+# Linux
 
 OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节期望你有一个可用的 Linux 工作环境和基本的 Linux 使用能力。如果你是一个熟练的 Linux 用户，你可以跳过本节。
 
-### 获得 Linux 环境
+## 获得 Linux 环境
 
 - 在 [USTC Vlab](https://vlab.ustc.edu.cn/vm/) 上得到一个 Linux 的容器环境（并非虚拟机，*可能*有部分实验无法在其上面完成），可以通过图形界面或 VSCode 远程 SSH 等多种方式连接；
 - 使用虚拟机，Windows 用户推荐 WSL2 或 VMware，macOS 用户可以参考 [在 macOS 中使用虚拟机（By Taoky）](https://blog.taoky.moe/2019-02-23/installing-os-on-vm.html)；
@@ -10,7 +10,7 @@ OSH 几乎所有实验都需要在 Linux 平台上完成、实现，所以本节
 
 我们会保证 Ubuntu 虚拟机/实体机不出现兼容性问题，并尽量保证使用 Vlab 可以完成实验。
 
-### Linux 入门
+## Linux 入门
 
 ???+ tip "终端/shell/命令行/软件源/换源是什么意思？"
 

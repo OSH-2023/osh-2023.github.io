@@ -26,9 +26,9 @@ extra_css:
 nav:
   - 首页: README.md
   - 实验零:
-      - 简介: lab0/README.md
-      - 第一节：Linux: lab0/phase1.md
-      - 第二节：Git: lab0/phase2.md
-      - 第三节：markdown: lab0/phase3.md
-      - 第四节：编程语言: lab0/phase4.md
+      - 零：简介: lab0/README.md
+      - 一：Linux: lab0/linux.md
+      - 二：Git: lab0/git.md
+      - 三：Markdown: lab0/markdown.md
+      - 四：编程说明: lab0/programming.md
   - FAQ: faq/README.md
