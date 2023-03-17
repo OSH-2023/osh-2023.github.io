@@ -70,11 +70,17 @@ make -j $((`nproc`-1))
     - 此次实验不是调参比赛，**满分可以在只修改前两层选项的情况下轻松达成**，请注意哪些选项是能够真正地、切实地影响编译后的内核大小的；
     - **「可选」** 交叉编译生成其他目标平台的 Linux 内核的方法请自行搜索。
 
-如果编译成功，我们可以在 `/linux-6.2.7/arch/x86_64/boot/` 下看到一个 `bzImage` 文件，这个文件就是内核镜像文件。可以使用 QEMU 进行测试：
+如果编译成功，我们可以在 `linux-6.2.7/arch/x86_64/boot/` 下看到一个 `bzImage` 文件，这个文件就是内核镜像文件。可以使用 QEMU 进行测试：
 
 ```bash
-qemu-system-x86_64 -kernel /arch/x86_64/boot/bzImage
+qemu-system-x86_64 -kernel arch/x86_64/boot/bzImage
 ```
+
+???+ question "无 GUI 环境/无法看到输出"
+
+    在上述命令后面加上选项 `-nographic -append console=ttyS0`
+
+    不过这会导致 Ctrl+C 无法终止 qemu，需要关闭 Terminal 或者 kill 对应进程。
 
 重复上述的修改和编译过程，即可进行对于 Linux 内核的删减。
 

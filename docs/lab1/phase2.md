@@ -27,6 +27,10 @@ int main() {
 }
 ```
 
+???+ info "init"
+
+    init 将会作为第一个用户态进程被启动，成为所有后续进程的父进程。
+
 编译，**静态链接** 为可执行程序：
 
 ```bash
@@ -47,9 +51,9 @@ find . | cpio --quiet -H newc -o | gzip -9 -n > ../initrd.cpio.gz
 qemu-system-x86_64 -kernel linux-6.2.7/arch/x86_64/boot/bzImage -initrd initrd.cpio.gz
 ```
 
-当你在屏幕上看到之前 `printf` 的信息的时候，就成功了。
+同第一部分，你可能需要在命令末尾增添 `-nographic -append console=ttyS0` 选项。
 
-如果没有看到输出的信息，又发现无法上翻，可以在上述命令后面加上选项 ` -nographic -append console=ttyS0`，不过这会导致执行后 Ctrl+C 无法终止，需要关闭 Terminal 或者 kill 对应进程。
+当你在屏幕上看到之前 `printf` 的信息的时候，就成功了。
 
 ## 本节评分标准
 
