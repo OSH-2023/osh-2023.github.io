@@ -17,14 +17,14 @@ osh-2023-labs
 - README.md
 - lab0
 - lab1
-  - README.md // 可选，建议在此文件中介绍你的实验过程
+  - README.md      // 可选，建议在此文件中介绍你的实验过程
   - syscall
     - bzImage
     - initrd.c
   - riscv/arm/...  // 可选，该目录命名为选择的交叉编译的平台（如选择 arm 则命名为 arm）
     - bzImage      // 交叉编译得到的内核镜像文件
   - bzImage
-  - .config
+  - .config        // 可选，编译内核时的配置文件
   - initrd.cpio.gz
 ```
 
