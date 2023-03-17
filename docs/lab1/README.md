@@ -21,6 +21,8 @@ osh-2023-labs
   - syscall
     - bzImage
     - initrd.c
+  - riscv/arm/... //可选，该目录命名为选择的交叉编译的平台（如选择arm则命名为arm）
+    - zImage  //交叉编译得到的内核镜像文件
   - bzImage
   - .config
   - initrd.cpio.gz
