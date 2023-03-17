@@ -34,6 +34,6 @@ nav:
   - 实验一:
       - 零：简介: lab1/README.md
       - 一：Linux 编译: lab1/phase1.md
-      - 二：未命名: lab1/phase2.md
-      - 三：未命名: lab1/phase3.md
+      - 二：创建初始内存盘: lab1/phase2.md
+      - 三：添加自定义系统调用: lab1/phase3.md
   - FAQ: faq/README.md
