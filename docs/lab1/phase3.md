@@ -44,18 +44,25 @@ SYSCALL_DEFINE2(hello, char *, buf, size_t, buf_len)
 
     系统调用的返回值是由内核主动设置的，一般来说，它们是整数类型的错误码。
 
-接下来我们将此文件添加到 Linux 的编译工具链中。打开 `Makefile` 文件，找到 `kernel/ certs/ mm/ fs/ ipc/ security/ crypto/` 所在的行，将 `custom/` 也添加到此列表中，变为：
-
-```make
-<...>
-core-y                 += kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ custom/
-<...>
-```
-
-再在 `custom` 下创建文件 `Makefile`，内容仅为：
+再在 `custom/` 下创建文件 `Makefile`，内容仅为：
 
 ```make
 obj-y := hello.o
+```
+
+接下来我们将此文件夹添加到 Linux 的编译工具链中。修改 `linux-6.2.7/Makefile` 文件，找到
+
+```Makefile
+# Objects we will link into vmlinux / subdirs we need to visit
+core-y		:=
+```
+
+将 `core-y` 初始化 `custom/`，变为：
+
+```Makefile
+<...>
+core-y		:= custom/
+<...>
 ```
 
 之后编译时就会将我们自行添加的 `custom/hello.c` 文件纳入到编译和链接中了。
