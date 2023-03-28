@@ -1,4 +1,4 @@
-# 「可选」拓展功能
+# 拓展功能参考
 
 ## 支持 History
 
@@ -8,15 +8,15 @@
 
 ```shell
 $ history 3
-  843  echo taokystrong
-  844  echo taoky
+  843  echo osh-2023
+  844  echo osh
   845  history 3
 $ !843
-echo taokystrong
-taokystrong
+echo osh-2023
+osh-2023
 $ !!
-echo taokystrong
-taokystrong
+echo osh-2023
+osh-2023
 ```
 
 请为你的 shell 实现对历史命令的处理，支持 `!n`、`!!` 和 `history n` 命令，且 `history n` 的输出请尽可能与 bash 相同。
@@ -26,17 +26,17 @@ taokystrong
 |            **「可选」**支持 history            |  5%  |
 | **「可选」**通过上下方向键切换到不同的历史命令 |  5%  |
 
-## 处理 Ctrl-D (EOF) 按键
+## 处理 `CTRL-D` (EOF) 按键
 
-在使用 shell 的时候输入 `exit` 即可退出 shell，Ctrl-D (EOF) 在这种场景下等同于 `exit`。
+在使用 shell 的时候输入 `exit` 即可退出 shell，`CTRL-D` (EOF) 在这种场景下等同于 `exit`。
 
 ???+info "提示"
 
-    Ctrl-D 并不会发送信号，而是输入一个特殊的 `EOF` 字符。
+    CTRL-D 并不会发送信号，而是输入一个特殊的 `EOF` 字符。
 
-|          要求           | 满分 |
-| :---------------------: | :--: |
-| **「可选」**支持 Ctrl+D |  5%  |
+|           要求            | 满分 |
+| :-----------------------: | :--: |
+| **「可选」**支持 `CTRL-D` |  5%  |
 
 ## Bash 风格的 TCP 重定向
 
