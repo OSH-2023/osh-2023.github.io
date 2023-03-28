@@ -28,14 +28,14 @@ $ cat out
 
 一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：
 
-- 标准输入文件（stdin）：文件描述符为 0，Unix/Linux 程序默认从 stdin 读取数据。
-- 标准输出文件（stdout）：文件描述符为 1，Unix/Linux 程序默认向 stdout 输出数据。
+- 标准输入文件（stdin）：文件描述符为 0，Unix/Linux 程序默认从 stdin 读取数据；
+- 标准输出文件（stdout）：文件描述符为 1，Unix/Linux 程序默认向 stdout 输出数据；
 - 标准错误文件（stderr）：文件描述符为 2，Unix/Linux 程序会向 stderr 流中写入错误信息。
 
 我们可以手动更改输入输出的文件描述符。请自行查找资料，实现以下这些文件重定向：
 
-1. 形如 `cmd 10> out.txt` 和 `cmd 20< in.txt` 这样的命令会将打开文件描述符 10 和 20 并重定向到相应的文件。
-2. `cmd <<< text` 会将 `"text\n"` 作为标准输入重定向给 `cmd`。
+1. 形如 `cmd 10> out.txt` 和 `cmd 20< in.txt` 这样的命令会将打开文件描述符 10 和 20 并重定向到相应的文件；
+2. `cmd <<< text` 会将 `"text\n"` 作为标准输入重定向给 `cmd`；
 3. 以下命令会将字符串 `"this\noutput\n"` 作为标准输入重定向给 `cmd`：
 
 ```shell

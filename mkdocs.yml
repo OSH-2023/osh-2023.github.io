@@ -42,6 +42,6 @@ nav:
       - 二：管道: lab2/pipe.md
       - 三：重定向: lab2/redirection.md
       - 四：信号处理: lab2/signal.md
-      - 五：「可选」前后台进程: lab2/fgbg.md
+      - 五：前后台进程: lab2/fgbg.md
       - 六：「可选」拓展功能: lab2/optional.md
   - FAQ: faq/README.md
