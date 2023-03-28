@@ -68,11 +68,11 @@ osh-2023
 我们一般使用的 shell 非常强大，你还可以自行了解下面这些语法的含义：
 
 ```shell
-echo ~root                         # 5% hint: /etc/passwd
-echo $SHELL                        # 5%
-A=1 env                            # 5%
-alias ll='ls -l'                   # 5%
-(sleep 10; echo aha) &             # 5%
+echo ~root               # 5% hint: /etc/passwd
+echo $SHELL              # 5%
+A=1 env                  # 5%
+alias ll='ls -l'         # 5%
+(sleep 10; echo aha) &   # 5%
 ```
 
 可以自行选择实现。

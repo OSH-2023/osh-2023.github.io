@@ -4,7 +4,7 @@
 
 ???+ warning "重要"
 
-    本实验作为代码编程实验，会进行查重。
+    本实验作为代码编程实验，**会进行查重**，一切抄袭行为后果自负！
 
 shell 程序包含一些必须实现的功能点和**「可选」**功能。
 
@@ -51,8 +51,7 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 我们鼓励进行与操作系统相关的实验探究，因此过度脱离主题的项目可能不会获得加分，例如：
 
 - 过于简单的内置命令，如 `:` (colon), `true`, `false`, `help` 等
-- 严重偏离 shell 的基本功能的项目，例如你[模仿 Zsh](https://github.com/johan/zsh/blob/master/Functions/Misc/tetris) 为你的 shell 内置了一个俄罗斯方块游戏
-
+- 严重偏离 shell 的基本功能的项目，例如你 [模仿 Zsh](https://github.com/johan/zsh/blob/master/Functions/Misc/tetris) 为你的 shell 内置了一个俄罗斯方块游戏
 
 作为一个参考基准，GNU Bash 具有的功能大部分都会被认可。
 
@@ -70,13 +69,13 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 g++ shell.cpp -o shell
 ```
 
-以上命令会调用 g++ 编译器编译出一个可执行文件 shell，你可以继续输入 `./shell` 来运行它。这是一个非常简陋的 shell，它会提示你输入命令，你可以输入 `exit` 退出，或者调用系统中有的其他命令来运行，例如 `ls`、`cat` 等。
+以上命令会调用 g++ 编译器编译出一个可执行文件 shell，你可以继续输入 `./shell` 来运行它。这是一个非常简陋的 shell，它会提示你输入命令，你可以调用系统中有的其他命令来运行，例如 `ls`、`cat` 等，或输入 `exit` 退出。
 
 你可以改进框架（示例代码嵌套层数较多，且错误处理不算很完备）并在框架的基础上继续完成实验，也可以从头编写自己的 shell 或者采用其它语言编写。
 
 ???+ question "思考"
 
-    理解 `exec` 系统调用家族。`execvp` 是如何根据 `ls` 获取到 `ls` 的可执行文件位置并执行的？
+    了解 `exec` 系统调用家族。`execvp` 是如何根据 `ls` 获取到 `ls` 的可执行文件位置并执行的？
 
 ```cpp
 // IO
@@ -135,6 +134,16 @@ int main() {
       }
 
       return code;
+    }
+
+    if (args[0] == "pwd") {
+      std::cout << "To be done!\n";
+      continue;
+    }
+
+    if (args[0] == "cd") {
+      std::cout << "To be done!\n";
+      continue;
     }
 
     // 处理外部命令
