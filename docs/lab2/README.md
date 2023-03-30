@@ -10,6 +10,18 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 
 必做部分得分上限 100%，可选部分得分上限 20%。你最多可以累计获得 120% 的分数。
 
+???+ question "如何提问？"
+
+    [提问的智慧](https://lug.ustc.edu.cn/wiki/doc/smart-questions/)
+
+    以下是一些要点：
+
+    - 提问前，请先 [STFW 和 RTFM](https://lug.ustc.edu.cn/wiki/doc/smart-questions/#rtfm-%E5%92%8C-stfw%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E4%BD%A0%E5%B7%B2%E5%AE%8C%E5%85%A8%E6%90%9E%E7%A0%B8%E4%BA%86)，ChatGPT 也是一个可考虑的选择；
+    - 尽量使你的问题是可复现的、明确的，并在此基础上裁剪定位到会导致出问题的核心代码；
+    - 详细描述问题，并提供相关指令及相关问题的报错截图，如果涉及系统问题请提供系统版本。
+
+    **优先**在实验文档评论区、[Issue 区](https://github.com/OSH-2023/osh-2023.github.io/issues) 及课程群内讨论实验的相关问题以便解决共性问题。
+
 ## 实验要求
 
 请按照以下目录结构组织你的 GitHub 仓库：
@@ -18,8 +30,8 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 .                     // Git 仓库目录
 ├── lab2              // 实验二根目录
 │   ├── shell.cpp     // 你的 shell 的源代码
-│   ├── Makefile      // 你提供的 Makefile
 │   ├── other.cpp
+│   ├── Makefile      // 你提供的 Makefile
 │   └── README.md     // 运行说明及简要的实验报告
 ├── .gitignore
 └── README.md
@@ -27,9 +39,9 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 
 如果选用 Rust 语言，lab2 目录下按照 Rust 工程组织（即包含 `src` 文件夹和 `Cargo.lock`, `Cargo.toml` 文件）即可。
 
-本实验可以使用 libc, libstdc++, libm 以及 iostream, STL 等 C/C++ 语言标准和常用库。如果你愿意，你也可以使用 readline 和 ncurses 等 Linux 程序常用库。使用此处没有列出的库前请询问助教。
+本实验可以使用 libc, libstdc++, libm 以及 iostream, STL 等 C/C++ 语言标准和常用库。如果你愿意，你也可以使用 readline 和 ncurses 等 Linux 程序常用库。对 Rust 允许使用库的说明请参见实验零。使用此处没有列出的库前请询问助教。
 
-对于 Git 工具的使用应符合规范，即当出现以下情况时，我们会酌情扣除一定分数：
+Git 的使用应符合规范。当出现以下情况时，我们会酌情扣除一定分数：
 
 - 很大一部分的 commit 是由 GitHub 网页上传的文件；
 - commit 寥寥无几。最好的习惯是每实现一个新的功能及每一次代码重构都对应 commit；
@@ -63,13 +75,36 @@ shell 程序包含一些必须实现的功能点和**「可选」**功能。
 
 ## 示例程序
 
-可以将下列示例程序命名为 `shell.cpp`，然后编译：
+可以将文末程序命名为 `shell.cpp`，然后在相同目录下创建 `Makefile`：
 
-```shell
-g++ shell.cpp -o shell
+```Makefile
+CC=g++
+CFLAGS=-c -Wall
+SOURCES=shell.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=shell
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f *o $(EXECUTABLE)
 ```
 
-以上命令会调用 g++ 编译器编译出一个可执行文件 shell，你可以继续输入 `./shell` 来运行它。这是一个非常简陋的 shell，它会提示你输入命令，你可以调用系统中有的其他命令来运行，例如 `ls`、`cat` 等，或输入 `exit` 退出。
+继续输入 `make` 即可编译出一个可执行文件 shell。
+
+你可以输入 `./shell` 来运行它。这是一个非常简陋的 shell，它会提示你输入命令，你可以调用系统中有的其他命令来运行，例如 `ls`、`cat` 等，或输入 `exit` 退出。
+
+输入 `make clean` 删除编译结果和中间产物。
+
+???+ info "gitignore"
+
+    你可以通过将 `.o` 文件和可执行文件添加到 `.gitignore` 文件的方式，来确保不会误 commit 中间文件。具体方式请 STFW。
 
 你可以改进框架（示例代码嵌套层数较多，且错误处理不算很完备）并在框架的基础上继续完成实验，也可以从头编写自己的 shell 或者采用其它语言编写。
 
