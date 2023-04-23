@@ -1,20 +1,25 @@
 # 实验介绍
 
-本实验通过 socket 编程，利用多进程、多线程技术，实现一个简易的支持并发的 HTTP 服务器，并可以利用线程复用， I/O 复用，缓存，预测等机制，提高 HTTP 服务器的性能。
+本实验通过 socket 编程，利用多进程、多线程技术，实现一个简易的支持并发的 HTTP/1.0 服务器，并可以利用线程复用， I/O 复用，缓存，预测等机制，提高 HTTP 服务器的性能。
 
 ## 启动一个简易 HTTP Server
 
 python 自带了一个简单的 HTTP Server，我们可以通过以下命令来体验一个 HTTP Server 的工作：
 
 ```bash
+# /tmp 可用于存放临时文件
+# 会在系统重启后被清空，因此不要在这里存放代码文件
 mkdir -p /tmp/webroot && cd /tmp/webroot
 echo "Hello from Python Server" > hello.html
 
-# python2
-python -m SimpleHTTPServer
+# Linux 发行版一般都至少预装了一个 Python 版本
+# 根据实际情况选择下面指令之一执行
 
-# python3
-python -m http.server
+# 若使用 python2
+python2 -m SimpleHTTPServer
+
+# 若使用 python3
+python3 -m http.server
 ```
 
 当屏幕中出现：
@@ -23,17 +28,17 @@ python -m http.server
 Serving HTTP on 0.0.0.0 port 8000 ...
 ```
 
-即说明该 Server 已经成功运行，地址  `0.0.0.0`  不是一个具体的地址，它代表 Server 监听在本地所有的 IPv4 地址上， `port 8000` 代表 Server 监听在端口 `8000` 上。可以在浏览器打开本地回环地址 `127.0.0.1` （这也是本地 IPv4 地址之一），端口 `8000` 访问这个 Server。
+即说明该 Server 已经成功运行，地址 `0.0.0.0` 不是一个具体的地址，它代表 Server 监听在本地所有的 IPv4 地址上， `port 8000` 代表 Server 监听在端口 `8000` 上。可以在浏览器打开本地回环地址 `127.0.0.1` （这也是本地 IPv4 地址之一），端口 `8000` 访问这个 Server。
 
-在浏览器中打开以下地址，就可以看到来自 Python Server 的返回内容。
+在浏览器中打开 <http://127.0.0.1:8000/hello.html>，就可以看到来自 Python Server 的返回内容。
 
-```bash
-http://127.0.0.1:8000/hello.html
-```
+## TCP 协议简介
+
+实际的网络通信是分层的，每一层都有自己的协议，每一层都可以面向上一层提供服务。我们这里不需要关心 TCP 协议的具体内容，只需要知道 TCP 协议能在两台主机间建立一条可靠的、双向的、基于字节流的通信即可。操作系统已经帮我们封装好了 socket 接口用以提供 TCP 协议的服务，我们只需要调用 socket 接口就可以实现 TCP 协议的通信（具体接口说明见后文），进而实现实验要求的部分 HTTP/1.0 协议。
 
 ## HTTP 协议简介
 
-接上一部分，HTTP 是一种基于文本的 TCP 协议，我们可以使用命令行工具 curl 以文本形式查看 HTTP 1.0 协议交互的全过程：
+HTTP/1.0 是一种基于文本的 TCP 协议，我们可以使用命令行工具 curl 以文本形式查看 HTTP 1.0 协议交互的全过程：
 
 ```bash
 # curl --http1.0 -v http://127.0.0.1:8000/hello.html
@@ -55,7 +60,7 @@ http://127.0.0.1:8000/hello.html
 <
 Hello from Python Server
 * Curl_http_done: called premature == 0
-* Closing connection 
+* Closing connection
 ```
 
 其中 `>` 开头的为请求（request）内容，本实验中，我们可以忽略第三行、第四行，得到必要的请求内容如下：
@@ -101,7 +106,7 @@ Hello from Python Server
 
 - 除了 `curl`，我们还可以使用 `nc 127.0.0.1 8000` 来手工构造请求测试。
 
-- 现实生活中，HTTP 1.1 和 HTTP 2.0 协议使用更为广泛，关于 HTTP 1.1 协议的更多内容可以阅读参考资料中的 RFC 2616，也可以网上查找资料了解：`User-Agent`，`Accept` ，`Content-type` 等字段的含义和必要性。
+- 现实生活中，HTTP 1.1 和 HTTP 2.0 协议使用更为广泛（以及不再基于 TCP 的 HTTP 3.0 协议），本次实验不做要求。关于 HTTP 1.1 协议的更多内容可以阅读参考资料中的 RFC 2616，也可以网上查找资料了解：`User-Agent`，`Accept` ，`Content-type` 等字段的含义和必要性。
 
 ## socket 简介
 
@@ -168,13 +173,13 @@ void handle_clnt(int clnt_sock)
     char* path = (char*) malloc(MAX_PATH_LEN * sizeof(char));
     ssize_t path_len;
     parse_request(req_buf, req_len, path, &path_len);
-    
+
     // 构造要返回的数据
     // 这里没有去读取文件内容，而是以返回请求资源路径作为示例，并且永远返回 200
     // 注意，响应头部后需要有一个多余换行（\r\n\r\n），然后才是响应内容
     char* response = (char*) malloc(MAX_SEND_LEN * sizeof(char)) ;
-    sprintf(response, 
-        "HTTP/1.0 %s\r\nContent-Length: %zd\r\n\r\n%s", 
+    sprintf(response,
+        "HTTP/1.0 %s\r\nContent-Length: %zd\r\n\r\n%s",
         HTTP_STATUS_200, path_len, path);
     size_t response_len = strlen(response);
 
@@ -184,7 +189,7 @@ void handle_clnt(int clnt_sock)
 
     // 关闭客户端套接字
     close(clnt_sock);
-    
+
     // 释放内存
     free(req_buf);
     free(path);
@@ -197,7 +202,7 @@ int main(){
     //   SOCK_STREAM: 面向连接的数据传输方式
     //   IPPROTO_TCP: 使用 TCP 协议
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    
+
     // 将套接字和指定的 IP、端口绑定
     //   用 0 填充 serv_addr （它是一个 sockaddr_in 结构体）
     struct sockaddr_in serv_addr;
@@ -213,7 +218,7 @@ int main(){
 
     // 使得 serv_sock 套接字进入监听状态，开始等待客户端发起请求
     listen(serv_sock, MAX_CONN);
-    
+
     // 接收客户端请求，获得一个可以与客户端通信的新的生成的套接字 clnt_sock
     struct sockaddr_in clnt_addr;
     socklen_t clnt_addr_size = sizeof(clnt_addr);
@@ -254,6 +259,14 @@ curl http://127.0.0.1:8000/hello
 curl http://127.0.0.1:8000/hello -v
 ```
 
+???+ question "重启 server 之后会连接失败？"
+
+    这个问题和 socket 没有正确关闭有关。
+
+    在出现这个问题时，可通过 `sudo netstat -naop4 | grep 8000` 看到处于 timewait 状态的 IPv4 的 TCP 连接以及回收需要等待的时间，（默认是 60s，可以 `cat /proc/sys/net/ipv4/tcp_tw_recycle` 查看）。在此期间，因为示例程序没有设置任何 reuse 选项，新启动的程序未能成功绑定端口，连接失败。
+
+    在调试开发时，为了避免这个问题，可以暂时将 timewait 的回收时间 `tcp_tw_recycle` 改为一个较小的值，如：`sudo sh -c 'echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle'`，这一改动在重启后会失效。
+
 示例程序中使用到的各调用的具体用法请同学们使用 `man` 命令查阅手册，如：`man 2 listen`。
 
 下面是一些本实验中需要重点理解的概念：
@@ -262,11 +275,13 @@ curl http://127.0.0.1:8000/hello -v
 
 当套接字正在处理客户端请求时，如果有新的请求进来，套接字是没法处理的，只能把它放进缓冲区，待当前请求处理完毕后，再从缓冲区中读取出来处理。如果不断有新的请求进来，它们就按照先后顺序在缓冲区中排队，直到缓冲区满。这个缓冲区，就称为请求队列（Request Queue）。
 
-缓冲区的长度（能存放多少个客户端请求）可以通过 listen() 函数的 backlog 参数指定，但究竟为多少并没有什么标准，可以根据你的需求来定。如果将 backlog 的值设置为 SOMAXCONN，就由系统来决定请求队列长度，这个值一般比较大，可能是几百，或者更多。
+缓冲区的长度（能存放多少个客户端请求）可以通过 `listen()` 函数的 `backlog` 参数指定，但究竟为多少并没有什么标准，可以根据你的需求来定。如果将 `backlog` 的值设置为 `SOMAXCONN`，就由系统来决定请求队列长度，这个值一般比较大，可能是几百，或者更多。
 
-当请求队列满时，就不再接收新的请求，对于 Linux，客户端会收到 ECONNREFUSED 错误，为了使得我们的服务器可用性尽可能高，这是我们要避免的。
+当请求队列满时，就不再接收新的请求，对于 Linux，客户端会收到 `ECONNREFUSED` 错误，为了使得我们的服务器可用性尽可能高，这是我们要避免的。
 
-注意：listen() 只是让套接字处于监听状态，并没有接收请求。接收请求需要使用 accept() 函数。
+???+ note "注意"
+
+    `listen()` 只是让套接字处于监听状态，并没有接收请求。接收请求需要使用 `accept()` 函数。
 
 ### 数据的接收和发送
 
@@ -279,6 +294,10 @@ ssize_t write(int fd, const void *buf, size_t nbytes);
 ssize_t read(int fd, void *buf, size_t nbytes);
 ```
 
-注意：这两个接口使用时很容易出错，如 read 时，不能假定能一次读取完 HTTP 请求的全部内容，而应该根据 HTTP 协议，不断尝试读取，直到读取到两个换行符（`\r\n\r\n`）时才算读取完成。
+???+ warning "网络 I/O 带来的问题"
+
+    注意这两个接口使用时很容易出错，如 `read` 时，不能假定能一次读取完 HTTP 请求的全部内容，也不能假定读到 EOF 为止，而应该根据 HTTP 协议，不断尝试读取，直到读取到两个换行符（`\r\n\r\n`）时才算读取完成。
+
+    同理，你也不能假定 `write` 函数可以一次写入所有内容。
 
 具体用法请同学们自行查阅手册，掌握各参数及返回值的意义。
