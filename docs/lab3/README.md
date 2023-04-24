@@ -1,6 +1,6 @@
 # 简介
 
-本实验通过 socket 编程，利用多进程、多线程技术，实现一个简易的支持并发的 HTTP/1.0 服务器，并可以利用线程复用， I/O 复用，缓存，预测等机制，提高 HTTP 服务器的性能。
+本实验通过 socket 编程，利用多线程技术，实现一个简易的支持并发的 HTTP/1.0 服务器，并可以利用线程复用、I/O 复用、缓存、预测等机制，提高 HTTP 服务器的性能。
 
 ???+ warning "重要"
 
@@ -9,13 +9,13 @@
 ???+ question "如何提问？"
 
     [提问的智慧](https://lug.ustc.edu.cn/wiki/doc/smart-questions/)
-    
+
     以下是一些要点：
-    
+
     - 提问前，请先 [STFW 和 RTFM](https://lug.ustc.edu.cn/wiki/doc/smart-questions/#rtfm-%E5%92%8C-stfw%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E4%BD%A0%E5%B7%B2%E5%AE%8C%E5%85%A8%E6%90%9E%E7%A0%B8%E4%BA%86)，ChatGPT 也是一个可考虑的选择；
     - 尽量使你的问题是可复现的、明确的，并在此基础上裁剪定位到会导致出问题的核心代码；
     - 详细描述问题，并**提供相关指令及相关问题的报错截图**，如果涉及系统问题请提供系统版本。
-    
+
     **优先**在实验文档评论区、[Issue 区](https://github.com/OSH-2023/osh-2023.github.io/issues) 及课程群内讨论实验的相关问题以便解决共性问题。
 
 ## 实验要求
