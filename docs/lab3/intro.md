@@ -260,7 +260,7 @@ gcc server.c -o server
 测试方法（新开一个终端）：
 
 ```bash
-curl http://127.0.0.1:8000/hello
+curl --http1.0 http://127.0.0.1:8000/hello
 ```
 
 如果成功，将会收到内容为 `/hello` 的 HTTP 响应。
@@ -268,7 +268,7 @@ curl http://127.0.0.1:8000/hello
 打开 `-v` (verbose) 选项，可以看到服务器返回的全部内容：
 
 ```bash
-curl http://127.0.0.1:8000/hello -v
+curl --http1.0 http://127.0.0.1:8000/hello -v
 ```
 
 ???+ question "重启 server 之后会连接失败？"
