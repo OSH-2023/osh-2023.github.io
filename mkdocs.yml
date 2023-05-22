@@ -51,4 +51,5 @@ nav:
       - 二：必做部分: lab3/required.md
       - 三：选做部分: lab3/optional.md
       - 四：测试及评分: lab3/score.md
+      - 跋：实验反馈: lab3/feedback.md
   - FAQ: faq/README.md
