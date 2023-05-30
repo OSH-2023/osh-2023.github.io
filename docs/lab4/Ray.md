@@ -5,7 +5,7 @@
 Ray 是伯克利大学 RISELab 研发的分布式计算系统，我愿称之为“AI 时代的 Spark”。
 
 按照官方文档的说法：
-Ray provides a simple, universal API for building distributed a>pplications.
+Ray provides a simple, universal API for building distributed applications.
 
 为什么说 Ray 是一个简单高效的分布式计算引擎呢？它主要有以下的特点：
 - 提供一种能够构建、运行分布式应用程序的 simple primitives；
@@ -87,4 +87,5 @@ https://docs.ray.io/en/latest/ray-air/benchmarks.html
 
 ## 参考资料
 https://zhuanlan.zhihu.com/p/399209343
+
 https://docs.ray.io/en/latest/ray-air/benchmarks.html
