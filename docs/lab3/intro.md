@@ -161,7 +161,7 @@ void parse_request(char* request, ssize_t req_len, char* path, ssize_t* path_len
     char* req = request;
 
     // 一个粗糙的解析方法，可能有 BUG！
-    // 获取第一个空格(s1)和第二个空格(s2)之间的内容，为 PATH
+    // 获取第一个空格 (s1) 和第二个空格 (s2) 之间的内容，为 PATH
     ssize_t s1 = 0;
     while(s1 < req_len && req[s1] != ' ') s1++;
     ssize_t s2 = s1 + 1;
@@ -216,7 +216,7 @@ int main(){
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
     // 将套接字和指定的 IP、端口绑定
-    //   用 0 填充 serv_addr （它是一个 sockaddr_in 结构体）
+    //   用 0 填充 serv_addr（它是一个 sockaddr_in 结构体）
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));
     //   设置 IPv4
@@ -237,7 +237,7 @@ int main(){
 
     while (1) // 一直循环
     {
-        // 当没有客户端连接时， accept() 会阻塞程序执行，直到有客户端连接进来
+        // 当没有客户端连接时，accept() 会阻塞程序执行，直到有客户端连接进来
         int clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
         // 处理客户端的请求
         handle_clnt(clnt_sock);

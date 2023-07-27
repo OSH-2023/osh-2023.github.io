@@ -40,16 +40,16 @@ Linux 提供 `select`、`epoll` 等高级的 I/O 复用模式，请自行了解�
 - Kotlin，structured coroutine，主打点之一/对比 Java 的优势之一；
 - C++，coroutine，从 C++20 开始。
 
-你可以尝试将自己的服务器改写为用 async/await 实现。一般来说，只要你的几个工作函数是 `async fn` 即可。 如果你不确定自己的实现是否「足够 async/await」，请积极询问助教们。
+你可以尝试将自己的服务器改写为用 async/await 实现。一般来说，只要你的几个工作函数是 `async fn` 即可。如果你不确定自己的实现是否「足够 async/await」，请积极询问助教们。
 
 C++ 的 coroutine 支持在 C++20 才加入且可能不够完全，资料较少，我们建议在实现此部分内容时使用 Rust 完成，但如果你愿意挑战 C/C++ 下的协程编程也是可行的。
 
-仅在此章节中，我们允许使用热门的 Rust 异步编程库，例如 tokio 和 async-std。 如果你想使用其他的异步库亦可提前询问我们。
+仅在此章节中，我们允许使用热门的 Rust 异步编程库，例如 tokio 和 async-std。如果你想使用其他的异步库亦可提前询问我们。
 
 参考资料：
 
 - 协程概念说明：<https://www.baeldung.com/java-threading-models>；
-- Rust tokio 库文档: <https://docs.rs/tokio/latest/tokio/>。
+- Rust tokio 库文档：<https://docs.rs/tokio/latest/tokio/>。
 
 ### io_uring
 
